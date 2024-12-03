@@ -40,7 +40,7 @@ export default function Register() {
   };
 
   return (
-    <div className="bg-base-200 flex justify-center items-center">
+    <div className="bg-base-200 px-4 flex justify-center items-center py-6 md-py-8 lg:py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary mb-4">

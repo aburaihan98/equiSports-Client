@@ -1,26 +1,42 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Register() {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegisterSubmit = (e) => {
+    e.stopPropagation();
     e.preventDefault();
 
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
+    const formData = new FormData(e.target);
+
+    const name = formData.get("name");
+    const photo = formData.get("photo");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one Uppercase letter");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one Lowercase letter");
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("Password must contain at least one six characters");
+      return;
+    }
 
     createUser(email, password)
-      .then((res) => {
-        console.log(res);
-        form.reset();
+      .then(() => {
+        toast.success("Your register successful");
+        navigate("/login");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => toast.error("Enter your valid email!"));
   };
 
   return (

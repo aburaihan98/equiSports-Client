@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Login() {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, loginWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -21,6 +22,18 @@ export default function Login() {
         toast.success("Your login successful");
       })
       .catch(() => toast.error("Your email or password is incorrect!"));
+  };
+
+  // google login
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then(() => {
+        navigate(location.state ? location.state : "/");
+        toast.success(" Your login successful by Google");
+      })
+      .catch(() => {
+        toast.error("Enter your valid email");
+      });
   };
 
   return (
@@ -63,7 +76,13 @@ export default function Login() {
               </button>
             </div>
           </form>
-
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full p-3 mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2"
+          >
+            <FaGoogle />
+            Login with Google
+          </button>
           <div className="text-center mt-6">
             <p className="text-sm text-gray-600">
               Don't have an account?{" "}

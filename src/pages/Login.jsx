@@ -1,31 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Login() {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // email password  login
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    e.stopPropagation();
 
     signInUser(email, password)
-      .then((res) => {
-        console.log(res);
-        form.reset();
-        navigate("/");
+      .then(() => {
+        navigate(location.state ? location.state : "/");
+        toast.success("Your login successful");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => toast.error("Your email or password is incorrect!"));
   };
 
   return (
-    <div className="bg-base-200  flex justify-center items-center">
+    <div className="bg-base-200 flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary mb-4">Login now!</h1>
@@ -38,6 +37,7 @@ export default function Login() {
                 type="email"
                 placeholder="Email"
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -51,6 +51,7 @@ export default function Login() {
                 type="password"
                 name="password"
                 placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />

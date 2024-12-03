@@ -71,22 +71,26 @@ export default function NavBar() {
             >
               <li>My Equipment List</li>
             </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? "btn bg-white" : "btn bg-primaryColor"
-              }
-            >
-              <li>Login</li>
-            </NavLink>
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                isActive ? "btn bg-white" : "btn bg-primaryColor"
-              }
-            >
-              <li>Register</li>
-            </NavLink>
+            {!user && (
+              <>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? "btn bg-white" : "btn bg-primaryColor"
+                  }
+                >
+                  <li>Login</li>
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    isActive ? "btn bg-white" : "btn bg-primaryColor"
+                  }
+                >
+                  <li>Register</li>
+                </NavLink>
+              </>
+            )}
           </ul>
         </div>
         <Link to="/">
@@ -129,22 +133,26 @@ export default function NavBar() {
           >
             <li>My Equipment List</li>
           </NavLink>
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              isActive ? "btn bg-white" : "btn bg-primaryColor"
-            }
-          >
-            <li>Login</li>
-          </NavLink>
-          <NavLink
-            to="/register"
-            className={({ isActive }) =>
-              isActive ? "btn bg-white" : "btn bg-primaryColor"
-            }
-          >
-            <li>Register</li>
-          </NavLink>
+          {!user && (
+            <>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primaryColor"
+                }
+              >
+                <li>Login</li>
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primaryColor"
+                }
+              >
+                <li>Register</li>
+              </NavLink>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end">

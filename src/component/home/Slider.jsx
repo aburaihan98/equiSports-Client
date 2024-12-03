@@ -14,6 +14,10 @@ export default function Slider() {
             ❯
           </a>
         </div>
+        <div className="absolute top-1/4 left-10 text-white">
+          <h2 className="text-4xl font-bold">Baseball Gear</h2>
+          <p className="text-lg mt-2">Get the best gear for your game.</p>
+        </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
         <img
@@ -27,6 +31,12 @@ export default function Slider() {
           <a href="#slide3" className="btn btn-circle">
             ❯
           </a>
+        </div>
+        <div className="absolute top-1/4 left-10 text-white">
+          <h2 className="text-4xl font-bold">Tennis Equipment</h2>
+          <p className="text-lg mt-2">
+            Equip yourself with premium tennis gear.
+          </p>
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
@@ -42,6 +52,10 @@ export default function Slider() {
             ❯
           </a>
         </div>
+        <div className="absolute top-1/4 left-10 text-white">
+          <h2 className="text-4xl font-bold">Football Accessories</h2>
+          <p className="text-lg mt-2">All your football needs in one place.</p>
+        </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
         <img
@@ -55,6 +69,12 @@ export default function Slider() {
           <a href="#slide1" className="btn btn-circle">
             ❯
           </a>
+        </div>
+        <div className="absolute top-1/4 left-10 text-white">
+          <h2 className="text-4xl font-bold">Sports Apparel</h2>
+          <p className="text-lg mt-2">
+            Find comfortable sports apparel for every season.
+          </p>
         </div>
       </div>
     </div>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
-import Equipment from "../component/equipment/Equipment";
+import EquipmentTable from "../component/equipment/EquipmentTable";
 
 export default function AllSportsEquipment() {
   const data = useLoaderData();
   const [equipments, setEquipments] = useState(data);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="w-11/12 m-auto py-8">
       <h1 className="text-2xl font-bold mb-6 text-center">
         All Sports Equipment
       </h1>
@@ -24,7 +24,7 @@ export default function AllSportsEquipment() {
           <tbody>
             {equipments &&
               equipments.map((equipment) => (
-                <Equipment key={equipment?._id} equipment={equipment} />
+                <EquipmentTable key={equipment?._id} equipment={equipment} />
               ))}
           </tbody>
         </table>

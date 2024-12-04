@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomeLayout />,
+        loader: () => fetch("http://localhost:3000/sports"),
       },
       {
         path: "/all-sports-equipment",

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLoaderData, useParams } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 
 export default function EquipmentDetails() {
   const { id } = useParams();
@@ -72,14 +72,6 @@ export default function EquipmentDetails() {
           <p>
             <span className="font-semibold">Seller Email:</span> {email}
           </p>
-          <Link to={`/equipment-edit/${_id}`}>
-            <button className="bg-blue-500 text-white mr-2 lg:mr-4 px-6 py-2 rounded-md hover:bg-blue-600 transition">
-              Edit equipment
-            </button>
-          </Link>
-          <button className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition">
-            Delete equipment
-          </button>
         </div>
       </div>
     </div>

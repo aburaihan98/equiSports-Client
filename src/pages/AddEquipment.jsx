@@ -1,17 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function AddEquipment() {
   const { user } = useContext(AuthContext);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
 
   const handleAddEquipment = (e) => {
     e.preventDefault();
 
     const form = e.target;
 
+    const name = form.name.value;
+    const email = form.email.value;
     const image = form.image.value;
     const sports = form.sports.value;
     const category = form.category.value;
@@ -91,8 +91,8 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Your name"
                 name="name"
-                value={user?.displayName || ""}
-                onChange={(e) => setName(e.target.value)}
+                value={user?.displayName}
+                readOnly
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -106,7 +106,7 @@ export default function AddEquipment() {
                 placeholder="Email"
                 name="email"
                 value={user?.email || ""}
-                onChange={(e) => setEmail(e.target.value)}
+                readOnly
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />

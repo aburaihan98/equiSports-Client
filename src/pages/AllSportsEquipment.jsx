@@ -1,4 +1,11 @@
+import { useState } from "react";
+import { useLoaderData } from "react-router";
+import Equipment from "../component/equipment/Equipment";
+
 export default function AllSportsEquipment() {
+  const data = useLoaderData();
+  const [equipments, setEquipments] = useState(data);
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6 text-center">
@@ -14,7 +21,12 @@ export default function AllSportsEquipment() {
               <th className="px-4 py-2 text-center font-semibold">Action</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {equipments &&
+              equipments.map((equipment) => (
+                <Equipment key={equipment?._id} equipment={equipment} />
+              ))}
+          </tbody>
         </table>
       </div>
     </div>

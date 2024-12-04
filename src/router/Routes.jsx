@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import HomeLayout from "../layout/HomeLayout";
 import AddEquipment from "../pages/AddEquipment";
 import AllSportsEquipment from "../pages/AllSportsEquipment";
+import EquipmentDetails from "../pages/EquipmentDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Root from "../Root";
@@ -20,10 +21,16 @@ const router = createBrowserRouter([
       {
         path: "/all-sports-equipment",
         element: <AllSportsEquipment />,
+        loader: () => fetch("http://localhost:3000/sports"),
       },
       {
         path: "/add-equipment",
         element: <AddEquipment />,
+      },
+      {
+        path: "/equipment-details/:id",
+        element: <EquipmentDetails />,
+        loader: () => fetch("http://localhost:3000/sports"),
       },
       {
         path: "/login",

@@ -3,6 +3,7 @@ import HomeLayout from "../layout/HomeLayout";
 import AddEquipment from "../pages/AddEquipment";
 import AllSportsEquipment from "../pages/AllSportsEquipment";
 import EquipmentDetails from "../pages/EquipmentDetails";
+import EquipmentEdit from "../pages/EquipmentEdit";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Root from "../Root";
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
         path: "/equipment-details/:id",
         element: <EquipmentDetails />,
         loader: () => fetch("http://localhost:3000/sports"),
+      },
+      {
+        path: "/equipment-edit/:id",
+        element: <EquipmentEdit />,
+        loader: ({ params }) => fetch(`http://localhost:3000/sports${params}`),
       },
       {
         path: "/login",

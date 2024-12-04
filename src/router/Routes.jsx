@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+import Equipments from "../component/home/Equipments";
 import HomeLayout from "../layout/HomeLayout";
 import AddEquipment from "../pages/AddEquipment";
 import AllSportsEquipment from "../pages/AllSportsEquipment";
@@ -20,6 +21,16 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomeLayout />,
         loader: () => fetch("http://localhost:3000/sports"),
+        children: [
+          {
+            path: "/",
+            element: <Equipments />,
+          },
+          {
+            path: "/:id",
+            element: <Equipments />,
+          },
+        ],
       },
       {
         path: "/all-sports-equipment",

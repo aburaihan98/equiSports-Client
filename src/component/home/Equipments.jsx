@@ -1,10 +1,25 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import EquipmentCard from "./EquipmentCard";
 
 export default function Equipments() {
-  const data = useLoaderData();
-  const [equipments, setEquipments] = useState(data);
+  const { id } = useParams();
+  const [equipments, setEquipments] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/sports")
+      .then((res) => res.json())
+      .then((data) => {
+        if (id) {
+          const filteredEquipments = data.filter(
+            (equipment) => equipment?._id === id
+          );
+          setEquipments(filteredEquipments);
+        } else {
+          setEquipments(data);
+        }
+      });
+  }, [id]);
 
   return (
     <div className="w-11/12 m-auto py-8">

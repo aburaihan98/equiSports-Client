@@ -1,23 +1,87 @@
 import { useContext, useState } from "react";
+import { useLoaderData, useParams } from "react-router";
+import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function EquipmentEdit() {
   const { user } = useContext(AuthContext);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const data = useLoaderData();
+  const { id } = useParams();
+
+  const [name, setName] = useState(data?.name);
+  const [email, setEmail] = useState(data?.email);
+  const [image, setImage] = useState(data?.image);
+  const [sports, setSports] = useState(data?.sports);
+  const [category, setCategory] = useState(data?.category);
+  const [description, setDescription] = useState(data?.description);
+  const [price, setPrice] = useState(data?.price);
+  const [rating, setRating] = useState(data?.rating);
+  const [customization, setCustomization] = useState(data?.customization);
+  const [processingTime, setProcessingTime] = useState(data?.processingTime);
+  const [stockStatus, setStockStatus] = useState(data?.stockStatus);
+
+  const handleEditEquipment = (e) => {
+    e.preventDefault();
+    const product = {
+      name,
+      email,
+      image,
+      sports,
+      category,
+      description,
+      price,
+      rating,
+      customization,
+      processingTime,
+      stockStatus,
+    };
+
+    fetch(`http://localhost:3000/sports/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data?.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "The equipment updated successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Something went wrong",
+            text: "Please try again later.",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Unable to complete the request.",
+        });
+      });
+  };
 
   return (
     <div className="bg-base-200 flex justify-center items-center">
       <div className="w-11/12 m-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary mb-4">
-            Add new equipment
+            Edit Equipment
           </h1>
         </div>
         <div className="bg-base-100 shadow-xl rounded-lg p-8">
           <form
             onSubmit={handleEditEquipment}
-            className=" lg:grid grid-cols-2 space-x-4 lg:space-x-8"
+            className="lg:grid grid-cols-2 space-x-4 lg:space-x-8"
           >
             <div className="form-control ml-4 lg:ml-8">
               <label className="label text-lg font-semibold text-gray-700">
@@ -27,8 +91,7 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Your name"
                 name="name"
-                value={user?.displayName || ""}
-                onChange={(e) => setName(e.target.value)}
+                value={name}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -41,8 +104,7 @@ export default function EquipmentEdit() {
                 type="email"
                 placeholder="Email"
                 name="email"
-                value={user?.email || ""}
-                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -55,6 +117,8 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Image"
                 name="image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -67,6 +131,8 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Sports"
                 name="sports"
+                value={sports}
+                onChange={(e) => setSports(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -79,6 +145,8 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Category"
                 name="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -91,6 +159,8 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Price"
                 name="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -103,18 +173,22 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Rating"
                 name="rating"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label text-lg font-semibold text-gray-700">
-                Customization{" "}
+                Customization
               </label>
               <input
                 type="text"
                 placeholder="Customization"
                 name="customization"
+                value={customization}
+                onChange={(e) => setCustomization(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -127,6 +201,8 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Processing Time"
                 name="processingTime"
+                value={processingTime}
+                onChange={(e) => setProcessingTime(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -138,6 +214,8 @@ export default function EquipmentEdit() {
               </label>
               <select
                 name="stockStatus"
+                value={stockStatus}
+                onChange={(e) => setStockStatus(e.target.value)}
                 className="select select-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               >
@@ -155,6 +233,8 @@ export default function EquipmentEdit() {
                 type="text"
                 placeholder="Description"
                 name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -162,7 +242,7 @@ export default function EquipmentEdit() {
             <div></div>
             <div className="form-control mt-6 col-span-2">
               <button className="btn btn-primary w-full py-3 rounded-lg text-white font-semibold">
-                Add Equipment
+                Edit Equipment
               </button>
             </div>
           </form>

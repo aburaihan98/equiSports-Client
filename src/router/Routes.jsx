@@ -5,6 +5,7 @@ import AllSportsEquipment from "../pages/AllSportsEquipment";
 import EquipmentDetails from "../pages/EquipmentDetails";
 import EquipmentEdit from "../pages/EquipmentEdit";
 import Login from "../pages/Login";
+import MyEquipmentList from "../pages/MyEquipmentList";
 import Register from "../pages/Register";
 import Root from "../Root";
 import ErrorPage from "./../ErrorPage";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/sports"),
       },
       {
+        path: "/my-equipment-list",
+        element: <MyEquipmentList />,
+      },
+      {
         path: "/add-equipment",
         element: <AddEquipment />,
       },
@@ -36,7 +41,8 @@ const router = createBrowserRouter([
       {
         path: "/equipment-edit/:id",
         element: <EquipmentEdit />,
-        loader: ({ params }) => fetch(`http://localhost:3000/sports${params}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/sports/${params.id}`),
       },
       {
         path: "/login",

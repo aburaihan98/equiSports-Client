@@ -48,7 +48,7 @@ export default function AddEquipment() {
         if (data?.insertedId) {
           Swal.fire({
             icon: "success",
-            title: "Your work has been saved",
+            title: "The equipment added successfully",
             showConfirmButton: false,
             timer: 1500,
           });

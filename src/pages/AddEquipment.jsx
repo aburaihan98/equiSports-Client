@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function AddEquipment() {
@@ -35,7 +36,38 @@ export default function AddEquipment() {
       stockStatus,
     };
 
-    console.log(product);
+    fetch("http://localhost:3000/sports", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data?.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Something went wrong",
+            text: "Please try again later.",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Unable to complete the request.",
+        });
+      });
   };
 
   return (
@@ -49,7 +81,7 @@ export default function AddEquipment() {
         <div className="bg-base-100 shadow-xl rounded-lg p-8">
           <form
             onSubmit={handleAddEquipment}
-            className=" grid grid-cols-1 lg:grid-cols-2 space-x-4 lg:space-x-8"
+            className=" lg:grid grid-cols-2 space-x-4 lg:space-x-8"
           >
             <div className="form-control ml-4 lg:ml-8">
               <label className="label text-lg font-semibold text-gray-700">
@@ -117,18 +149,6 @@ export default function AddEquipment() {
             </div>
             <div className="form-control">
               <label className="label text-lg font-semibold text-gray-700">
-                Description
-              </label>
-              <input
-                type="text"
-                placeholder="Description"
-                name="description"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label text-lg font-semibold text-gray-700">
                 Price
               </label>
               <input
@@ -190,6 +210,18 @@ export default function AddEquipment() {
                 <option value="Limited Stock">Limited Stock</option>
                 <option value="Out of Stock">Out of Stock</option>
               </select>
+            </div>
+            <div className="form-control col-span-2">
+              <label className="label text-lg font-semibold text-gray-700">
+                Description
+              </label>
+              <input
+                type="text"
+                placeholder="Description"
+                name="description"
+                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
             </div>
             <div></div>
             <div className="form-control mt-6 col-span-2">

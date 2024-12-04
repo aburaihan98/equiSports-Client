@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../layout/HomeLayout";
 import AddEquipment from "../pages/AddEquipment";
+import AllSportsEquipment from "../pages/AllSportsEquipment";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Root from "../Root";
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomeLayout />,
+      },
+      {
+        path: "/all-sports-equipment",
+        element: <AllSportsEquipment />,
       },
       {
         path: "/add-equipment",

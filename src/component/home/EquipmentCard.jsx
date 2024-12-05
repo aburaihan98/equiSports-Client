@@ -1,3 +1,5 @@
+import React from "react";
+import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router";
 
 export default function EquipmentCard({ equipment }) {
@@ -10,15 +12,37 @@ export default function EquipmentCard({ equipment }) {
         className="w-full h-48 object-cover rounded-md mb-4"
       />
       <div className="flex gap-8">
-        <h2 className="text-lg font-bold mb-2">{sports}</h2>
-        <h2 className="text-lg font-bold mb-2">{price}</h2>
+        <h2 className="text-gray-600 mb-2 text-lg">
+          <span className="text-xl font-bold">Name: </span>
+          {sports}
+        </h2>
       </div>
-      <div className="flex gap-8">
-        <p className="text-gray-600 mb-4">{category}</p>
-        <p className="text-gray-600 mb-4">{rating}</p>
+      <div className="">
+        <p className="text-gray-600 mb-2 text-lg">
+          {" "}
+          <span className="text-xl font-bold">Category: </span>
+          {category}
+        </p>
+        <p className="text-gray-600 mb-2 text-lg">
+          <span className="text-xl font-bold">Price: $</span>
+          {price}
+        </p>
+        <p className="text-gray-600 mb-4 text-lg">
+          <span className="text-xl font-bold">Rating: </span>
+          <ReactStars
+            count={5}
+            size={24}
+            value={rating}
+            isHalf={true}
+            emptyIcon={<i className="far fa-star"></i>}
+            halfIcon={<i className="fa fa-star-half-alt"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="#ffd700"
+          />
+        </p>
       </div>
       <Link to={`/equipment-details/${_id}`}>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+        <button className="btn bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary transition">
           View Details
         </button>
       </Link>

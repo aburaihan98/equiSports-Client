@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import Swal from "sweetalert2";
+import SimpleRating from "../component/simpleRating/SimpleRating";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function EquipmentEdit() {
@@ -52,6 +53,18 @@ export default function EquipmentEdit() {
             showConfirmButton: false,
             timer: 1500,
           });
+          // Reset
+          setName("");
+          setEmail("");
+          setImage("");
+          setSports("");
+          setCategory("");
+          setDescription("");
+          setPrice("");
+          setRating(0);
+          setCustomization("");
+          setProcessingTime("");
+          setStockStatus("");
         } else {
           Swal.fire({
             icon: "error",
@@ -71,10 +84,10 @@ export default function EquipmentEdit() {
   };
 
   return (
-    <div className="bg-base-200 flex justify-center items-center">
+    <div className="bg-gray-100 flex justify-center items-center pt-8 pb-12 lg:pb-24">
       <div className="w-11/12 m-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">
+          <h1 className="text-3xl font-bold text-primary mb-4">
             Edit Equipment
           </h1>
         </div>
@@ -167,20 +180,6 @@ export default function EquipmentEdit() {
             </div>
             <div className="form-control">
               <label className="label text-lg font-semibold text-gray-700">
-                Rating
-              </label>
-              <input
-                type="text"
-                placeholder="Rating"
-                name="rating"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label text-lg font-semibold text-gray-700">
                 Customization
               </label>
               <input
@@ -207,7 +206,6 @@ export default function EquipmentEdit() {
                 required
               />
             </div>
-
             <div className="form-control">
               <label className="label text-lg font-semibold text-gray-700">
                 Stock Status
@@ -224,6 +222,19 @@ export default function EquipmentEdit() {
                 <option value="Limited Stock">Limited Stock</option>
                 <option value="Out of Stock">Out of Stock</option>
               </select>
+            </div>
+            <div className="form-control">
+              <label className="label text-lg font-semibold text-gray-700">
+                Ratting
+              </label>
+              <div className="input input-bordered w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                <SimpleRating
+                  rating={rating}
+                  onRatingChange={(newRating) => {
+                    setRating(newRating);
+                  }}
+                />
+              </div>
             </div>
             <div className="form-control col-span-2">
               <label className="label text-lg font-semibold text-gray-700">

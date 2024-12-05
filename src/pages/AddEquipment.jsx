@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import SimpleRating from "../component/simpleRating/SimpleRating";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function AddEquipment() {
   const { user } = useContext(AuthContext);
+  const [rating, setRating] = useState(0);
 
   const handleAddEquipment = (e) => {
     e.preventDefault();
@@ -17,7 +19,6 @@ export default function AddEquipment() {
     const category = form.category.value;
     const description = form.description.value;
     const price = form.price.value;
-    const rating = form.rating.value;
     const customization = form.customization.value;
     const processingTime = form.processingTime.value;
     const stockStatus = form.stockStatus.value;
@@ -46,6 +47,7 @@ export default function AddEquipment() {
       .then((response) => response.json())
       .then((data) => {
         if (data?.insertedId) {
+          form.reset();
           Swal.fire({
             icon: "success",
             title: "The equipment added successfully",
@@ -71,10 +73,10 @@ export default function AddEquipment() {
   };
 
   return (
-    <div className="bg-base-200 flex justify-center items-center">
+    <div className="pb-24 pt-8 bg-gray-100 flex justify-center items-center">
       <div className="w-11/12 m-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">
+          <h1 className="text-3xl font-bold text-primary mb-4">
             Add new equipment
           </h1>
         </div>
@@ -161,18 +163,6 @@ export default function AddEquipment() {
             </div>
             <div className="form-control">
               <label className="label text-lg font-semibold text-gray-700">
-                Rating
-              </label>
-              <input
-                type="text"
-                placeholder="Rating"
-                name="rating"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label text-lg font-semibold text-gray-700">
                 Customization{" "}
               </label>
               <input
@@ -195,7 +185,6 @@ export default function AddEquipment() {
                 required
               />
             </div>
-
             <div className="form-control">
               <label className="label text-lg font-semibold text-gray-700">
                 Stock Status
@@ -210,6 +199,12 @@ export default function AddEquipment() {
                 <option value="Limited Stock">Limited Stock</option>
                 <option value="Out of Stock">Out of Stock</option>
               </select>
+            </div>
+            <div className="form-control">
+              <label className="label text-gray-700">Ratting</label>
+              <div className="input input-bordered w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                <SimpleRating rating={rating} onRatingChange={setRating} />
+              </div>
             </div>
             <div className="form-control col-span-2">
               <label className="label text-lg font-semibold text-gray-700">

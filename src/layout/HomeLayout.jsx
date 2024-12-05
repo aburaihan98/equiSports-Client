@@ -8,11 +8,11 @@ export default function HomeLayout() {
   return (
     <>
       <Slider />
-      <div className="w-11/12 m-auto grid grid-cols-12">
-        <div className="col-span-2">
+      <div className="w-11/12 m-auto grid lg:grid-cols-12">
+        <div className="lg:col-span-2">
           <Categories />
         </div>
-        <div className="col-span-10">
+        <div className="lg:col-span-10">
           <Outlet />
         </div>
       </div>

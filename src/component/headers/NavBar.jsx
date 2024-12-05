@@ -1,7 +1,9 @@
 import { useContext } from "react";
+import { Fade } from "react-awesome-reveal";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import UserImage from "../../assets/user.png";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import { AuthContext } from "../../provider/AuthProvider";
 
 export default function NavBar() {
@@ -16,33 +18,100 @@ export default function NavBar() {
   };
 
   return (
-    <div className="w-11/12 m-auto navbar px-0 py-4">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <div className="bg-[#007BFF]">
+      <div className="w-11/12 m-auto navbar px-0 py-4">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className=" bg-primary space-y-1 font-medium text-lg text-[#706F6F] menu menu-sm dropdown-content  rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primary text-white"
+                }
+              >
+                <li>Home</li>
+              </NavLink>
+              <NavLink
+                to="/all-sports-equipment"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primary text-white"
+                }
+              >
+                <li>All Sports Equipment</li>
+              </NavLink>
+              <NavLink
+                to="/add-equipment"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primary text-white"
+                }
+              >
+                <li>Add Equipment</li>
+              </NavLink>
+              <NavLink
+                to="/my-equipment-list"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primary text-white"
+                }
+              >
+                <li>My Equipment List</li>
+              </NavLink>
+              {!user && (
+                <>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "btn bg-white" : "btn bg-primary text-white"
+                    }
+                  >
+                    <li>Login</li>
+                  </NavLink>
+                  <NavLink
+                    to="/register"
+                    className={({ isActive }) =>
+                      isActive ? "btn bg-white" : "btn bg-primary text-white"
+                    }
+                  >
+                    <li>Register</li>
+                  </NavLink>
+                </>
+              )}
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className=" bg-primaryColor space-y-1 font-medium text-lg text-[#706F6F] menu menu-sm dropdown-content  rounded-box z-10 mt-3 w-52 p-2 shadow"
-          >
+          <Link to="/">
+            <button className="font-bold lg:text-3xl text-white">
+              <h2>
+                <Fade cascade>
+                  <p>SportsNest</p>
+                </Fade>
+              </h2>
+            </button>
+          </Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="space-x-4 menu menu-horizontal px-1 font-semibold text-lg text-[#706F6F]">
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "btn bg-white" : "btn bg-primaryColor"
+                isActive ? "btn bg-white" : "btn bg-primary text-white"
               }
             >
               <li>Home</li>
@@ -50,7 +119,7 @@ export default function NavBar() {
             <NavLink
               to="/all-sports-equipment"
               className={({ isActive }) =>
-                isActive ? "btn bg-white" : "btn bg-primaryColor"
+                isActive ? "btn bg-white" : "btn bg-primary text-white"
               }
             >
               <li>All Sports Equipment</li>
@@ -58,7 +127,7 @@ export default function NavBar() {
             <NavLink
               to="/add-equipment"
               className={({ isActive }) =>
-                isActive ? "btn bg-white" : "btn bg-primaryColor"
+                isActive ? "btn bg-white" : "btn bg-primary text-white"
               }
             >
               <li>Add Equipment</li>
@@ -66,7 +135,7 @@ export default function NavBar() {
             <NavLink
               to="/my-equipment-list"
               className={({ isActive }) =>
-                isActive ? "btn bg-white" : "btn bg-primaryColor"
+                isActive ? "btn bg-white" : "btn bg-primary text-white"
               }
             >
               <li>My Equipment List</li>
@@ -76,7 +145,7 @@ export default function NavBar() {
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    isActive ? "btn bg-white" : "btn bg-primaryColor"
+                    isActive ? "btn bg-white" : "btn bg-primary text-white"
                   }
                 >
                   <li>Login</li>
@@ -84,7 +153,7 @@ export default function NavBar() {
                 <NavLink
                   to="/register"
                   className={({ isActive }) =>
-                    isActive ? "btn bg-white" : "btn bg-primaryColor"
+                    isActive ? "btn bg-white" : "btn bg-primary text-white"
                   }
                 >
                   <li>Register</li>
@@ -93,96 +162,32 @@ export default function NavBar() {
             )}
           </ul>
         </div>
-        <Link to="/">
-          <button className="font-bold lg:text-3xl">
-            <h2>SportsNest</h2>
-          </button>
-        </Link>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="space-x-4 menu menu-horizontal px-1 font-semibold text-lg text-[#706F6F]">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "btn bg-white" : "btn bg-primaryColor"
-            }
-          >
-            <li>Home</li>
-          </NavLink>
-          <NavLink
-            to="/all-sports-equipment"
-            className={({ isActive }) =>
-              isActive ? "btn bg-white" : "btn bg-primaryColor"
-            }
-          >
-            <li>All Sports Equipment</li>
-          </NavLink>
-          <NavLink
-            to="/add-equipment"
-            className={({ isActive }) =>
-              isActive ? "btn bg-white" : "btn bg-primaryColor"
-            }
-          >
-            <li>Add Equipment</li>
-          </NavLink>
-          <NavLink
-            to="/my-equipment-list"
-            className={({ isActive }) =>
-              isActive ? "btn bg-white" : "btn bg-primaryColor"
-            }
-          >
-            <li>My Equipment List</li>
-          </NavLink>
-          {!user && (
-            <>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "btn bg-white" : "btn bg-primaryColor"
-                }
-              >
-                <li>Login</li>
-              </NavLink>
-              <NavLink
-                to="/register"
-                className={({ isActive }) =>
-                  isActive ? "btn bg-white" : "btn bg-primaryColor"
-                }
-              >
-                <li>Register</li>
-              </NavLink>
-            </>
-          )}
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <div className="w-12 h-12 relative group">
-          <img
-            className="w-full h-full rounded-full cursor-pointer"
-            src={user?.photoURL ? user?.photoURL : UserImage}
-            alt="User image"
-          />
-          <p
-            id="displayName"
-            className="absolute top-1/2 -translate-y-1/2 right-16  whitespace-nowrap hidden group-hover:block font-medium text-lg text-white "
-          >
-            {user?.displayName}
-          </p>
-        </div>
-        {user ? (
-          <button
-            onClick={handleLogout}
-            className="btn bg-primaryColor text-white hover:bg-white hover:text-primaryColor ml-2.5"
-          >
-            Logout
-          </button>
-        ) : (
-          <Link to="/login" className="ml-2.5">
-            <button className="btn bg-primaryColor text-white hover:bg-white hover:text-primaryColor">
-              Login
+        <div className="navbar-end">
+          <div className="w-12 h-12">
+            <img
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={user?.displayName}
+              className="w-full h-full rounded-full cursor-pointer"
+              src={user?.photoURL ? user?.photoURL : UserImage}
+              alt="User image"
+            />
+            <Tooltip id="my-tooltip" place="left" />
+          </div>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="btn bg-primary text-white hover:bg-white hover:text-secondary ml-2.5"
+            >
+              Logout
             </button>
-          </Link>
-        )}
+          ) : (
+            <Link to="/login" className="ml-2.5">
+              <button className="btn bg-primary text-white hover:bg-white hover:text-secondary">
+                Login
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ export default function CustomerReviews() {
 
   return (
     <section className="py-12 bg-gray-100">
-      <div className="container mx-auto">
+      <div className="w-11/12 m-auto">
         <h2 className="text-3xl font-bold text-center mb-8">
           Customer Reviews
         </h2>

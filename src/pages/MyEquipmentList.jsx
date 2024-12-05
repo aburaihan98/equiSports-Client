@@ -27,16 +27,22 @@ export default function MyEquipmentList() {
   }
 
   return (
-    <div className="w-11/12 m-auto">
-      <h1 className="text-3xl font-bold text-center mb-8">My Equipment</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-6">
-        {equipments.length === 0 ? (
-          <div>No equipment found</div>
-        ) : (
-          equipments.map((equipment) => (
-            <MyEquipmentListCard key={equipment?._id} equipment={equipment} />
-          ))
-        )}
+    <div className="bg-gray-100 pb-24 pt-8">
+      <div className="w-11/12 m-auto">
+        <h1 className="text-3xl font-bold text-center mb-8 text-primary">
+          My Equipment
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-6">
+          {equipments.length === 0 ? (
+            <div className="text-center py-12 lg:py-24 text-3xl font-bold text-primary">
+              No equipment found
+            </div>
+          ) : (
+            equipments.map((equipment) => (
+              <MyEquipmentListCard key={equipment?._id} equipment={equipment} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

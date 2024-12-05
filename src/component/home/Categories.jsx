@@ -5,15 +5,13 @@ export default function Categories() {
   const data = useLoaderData();
 
   return (
-    <div className="w-11/12 m-auto">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Equipment Categories
-      </h1>
+    <div className="w-11/12 m-auto py-8">
+      <h1 className="text-2xl font-bold mb-6 text-center">Categories</h1>
       <NavLink
         to="/"
         className={
           pathname === "/"
-            ? "bg-blue-500 text-white btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out"
+            ? "bg-primary text-white btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out"
             : "btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out"
         }
       >
@@ -26,8 +24,8 @@ export default function Categories() {
               to={`/${equipment?._id}`}
               className={({ isActive }) =>
                 isActive
-                  ? "btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out bg-blue-500 text-white"
-                  : "btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out hover:bg-blue-500"
+                  ? "btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out bg-primary text-white"
+                  : "btn w-full mb-2  font-semibold py-2 px-4 rounded-lg  transition duration-300 ease-in-out hover:bg-primary"
               }
             >
               {equipment?.category || "No Category"}

@@ -7,7 +7,7 @@ export default function Equipments() {
   const [equipments, setEquipments] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/sports")
+    fetch("http://localhost:3000")
       .then((res) => res.json())
       .then((data) => {
         if (id) {

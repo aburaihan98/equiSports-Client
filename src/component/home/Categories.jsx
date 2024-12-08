@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { NavLink, useLoaderData, useLocation } from "react-router";
 
 export default function Categories() {
@@ -6,7 +7,9 @@ export default function Categories() {
 
   return (
     <div className="w-11/12 m-auto py-8">
-      <h1 className="text-2xl font-bold mb-6 text-center">Categories</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-primary">
+        <Fade cascade>Categories</Fade>
+      </h1>
       <NavLink
         to="/"
         className={

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { AuthContext } from "../../provider/AuthProvider";
+import ThemeToggle from "../hemeToggle/ThemeToggle";
 
 export default function NavBar() {
   const { user, userLogout } = useContext(AuthContext);
@@ -74,34 +75,14 @@ export default function NavBar() {
               >
                 <li>My Equipment List</li>
               </NavLink>
-              {!user && (
-                <>
-                  <NavLink
-                    to="/login"
-                    className={({ isActive }) =>
-                      isActive ? "btn bg-white" : "btn bg-primary text-white"
-                    }
-                  >
-                    <li>Login</li>
-                  </NavLink>
-                  <NavLink
-                    to="/register"
-                    className={({ isActive }) =>
-                      isActive ? "btn bg-white" : "btn bg-primary text-white"
-                    }
-                  >
-                    <li>Register</li>
-                  </NavLink>
-                </>
-              )}
             </ul>
           </div>
           <Link to="/">
             <button className="font-bold lg:text-3xl text-white">
               <h2>
-                <Fade cascade>
-                  <p>SportsNest</p>
-                </Fade>
+                <p>
+                  <Fade cascade>EquiSports</Fade>
+                </p>
               </h2>
             </button>
           </Link>
@@ -140,52 +121,52 @@ export default function NavBar() {
             >
               <li>My Equipment List</li>
             </NavLink>
-            {!user && (
-              <>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? "btn bg-white" : "btn bg-primary text-white"
-                  }
-                >
-                  <li>Login</li>
-                </NavLink>
-                <NavLink
-                  to="/register"
-                  className={({ isActive }) =>
-                    isActive ? "btn bg-white" : "btn bg-primary text-white"
-                  }
-                >
-                  <li>Register</li>
-                </NavLink>
-              </>
-            )}
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="w-12 h-12">
-            <img
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={user?.displayName}
-              className="w-full h-full rounded-full cursor-pointer"
-              src={user?.photoURL ? user?.photoURL : UserImage}
-              alt="User image"
-            />
-            <Tooltip id="my-tooltip" place="left" />
+          <div className="mr-2 flex justify-center items-center">
+            <ThemeToggle />
           </div>
           {user ? (
-            <button
-              onClick={handleLogout}
-              className="btn bg-primary text-white hover:bg-white hover:text-secondary ml-2.5"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link to="/login" className="ml-2.5">
-              <button className="btn bg-primary text-white hover:bg-white hover:text-secondary">
-                Login
+            <>
+              <div className="w-12 h-12">
+                <img
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  className="w-full h-full rounded-full cursor-pointer"
+                  src={user?.photoURL ? user?.photoURL : ""}
+                  alt={user?.displayName}
+                />
+                <Tooltip id="my-tooltip" place="left" />
+              </div>
+              <button
+                onClick={handleLogout}
+                className="btn bg-primary text-white hover:bg-white hover:text-secondary ml-2.5"
+              >
+                Logout
               </button>
-            </Link>
+            </>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn bg-white mr-2"
+                    : "btn bg-primary text-white mr-2"
+                }
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive ? "btn bg-white" : "btn bg-primary text-white"
+                }
+              >
+                Register
+              </NavLink>
+            </>
           )}
         </div>
       </div>

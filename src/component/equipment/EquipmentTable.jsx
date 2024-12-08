@@ -5,7 +5,7 @@ export default function EquipmentTable({ equipment }) {
   const { _id, image, sports, category, price, rating } = equipment || {};
 
   return (
-    <tr className="border-b hover:bg-gray-50">
+    <tr className="border-b">
       <td className="px-4 py-2">{sports}</td>
       <td className="px-4 py-2">{category}</td>
       <td className="px-4 py-2">${price}</td>

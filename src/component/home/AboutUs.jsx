@@ -1,14 +1,15 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 
 export default function AboutUs() {
   return (
     <section className="py-8 lg:py-16 ">
       <div className="w-11/12 m-auto">
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-6 text-primary">
-            About EquiSports
+          <h2 className="text-3xl font-bold mb-6 text-primary">
+            <Fade cascade>About EquiSports</Fade>
           </h2>
-          <p className="text-lg text-gray-700">
+          <p className="text-lg ">
             At EquiSports, we are passionate about sports and committed to
             delivering the best equipment for athletes at every level. From
             beginners to professionals, our products are designed to inspire and
@@ -21,7 +22,7 @@ export default function AboutUs() {
             <h3 className="text-2xl font-semibold mb-4 text-primary">
               Our Mission
             </h3>
-            <p className="text-gray-700 text-lg mb-6">
+            <p className=" text-lg mb-6">
               To empower athletes by providing access to top-notch sports gear
               that meets their unique needs. We strive to create a community
               where everyone can embrace their passion for sports.
@@ -29,7 +30,7 @@ export default function AboutUs() {
             <h3 className="text-2xl font-semibold mb-4 text-primary">
               Why Choose Us?
             </h3>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <ul className="list-disc list-inside  space-y-2">
               <li>High-quality products from trusted brands.</li>
               <li>Extensive range of sports categories.</li>
               <li>Customer-first approach with top-notch support.</li>

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 import SimpleRating from "../component/simpleRating/SimpleRating";
 import { AuthContext } from "../provider/AuthProvider";
@@ -6,6 +7,14 @@ import { AuthContext } from "../provider/AuthProvider";
 export default function AddEquipment() {
   const { user } = useContext(AuthContext);
   const [rating, setRating] = useState(0);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   const handleAddEquipment = (e) => {
     e.preventDefault();
@@ -73,29 +82,27 @@ export default function AddEquipment() {
   };
 
   return (
-    <div className="pb-24 pt-8 bg-gray-100 flex justify-center items-center">
+    <div className="pb-24 pt-8  flex justify-center items-center">
       <div className="w-11/12 m-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary mb-4">
-            Add new equipment
+            <Fade cascade>Add new equipment</Fade>
           </h1>
         </div>
-        <div className="bg-base-100 shadow-xl rounded-lg p-8">
+        <div className="bg-base-100 shadow-2xl rounded-lg p-8">
           <form
             onSubmit={handleAddEquipment}
-            className=" lg:grid grid-cols-2 space-x-4 lg:space-x-8"
+            className="lg:grid grid-cols-2 space-x-4 lg:space-x-8"
           >
             <div className="form-control ml-4 lg:ml-8">
-              <label className="label text-lg font-semibold text-gray-700">
-                Your name
-              </label>
+              <label className="label text-lg font-semibold ">Your name</label>
               <input
                 type="text"
                 placeholder="Your name"
                 name="name"
                 value={user?.displayName}
                 readOnly
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -109,7 +116,7 @@ export default function AddEquipment() {
                 name="email"
                 value={user?.email || ""}
                 readOnly
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -121,7 +128,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Image"
                 name="image"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -133,7 +140,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Sports"
                 name="sports"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -145,7 +152,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Category"
                 name="category"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -157,7 +164,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Price"
                 name="price"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -169,7 +176,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Customization"
                 name="customization"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -181,7 +188,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Processing Time"
                 name="processingTime"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -191,7 +198,7 @@ export default function AddEquipment() {
               </label>
               <select
                 name="stockStatus"
-                className="select select-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="select select-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               >
                 <option value="">Select Stock Status</option>
@@ -214,7 +221,7 @@ export default function AddEquipment() {
                 type="text"
                 placeholder="Description"
                 name="description"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>

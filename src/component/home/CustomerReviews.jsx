@@ -1,4 +1,8 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
+import ReactStars from "react-rating-stars-component";
+import { Tooltip } from "react-tooltip";
+import "../../index.css";
 
 export default function CustomerReviews() {
   const reviews = [
@@ -8,6 +12,8 @@ export default function CustomerReviews() {
       comment:
         "Great selection of products! The quality is top-notch, and the delivery was super fast.",
       rating: 5,
+      details:
+        "Ordered a football and gloves. The football is of premium quality with excellent grip. The gloves fit perfectly and are durable. Delivery was completed within 24 hours without any issues.",
     },
     {
       id: 2,
@@ -15,6 +21,8 @@ export default function CustomerReviews() {
       comment:
         "Loved the user-friendly website and the customer support was excellent. Highly recommend!",
       rating: 4,
+      details:
+        "Bought a tennis racket. It’s lightweight and ideal for beginners. The string tension was perfect, and the grip felt comfortable. Customer support resolved my queries promptly.",
     },
     {
       id: 3,
@@ -22,6 +30,8 @@ export default function CustomerReviews() {
       comment:
         "Found everything I needed for my soccer training. The discounts were a bonus!",
       rating: 5,
+      details:
+        "Got a complete soccer kit including jersey, shorts, and socks. The quality is outstanding and perfect for training sessions. Discounts made it even better.",
     },
     {
       id: 4,
@@ -29,6 +39,8 @@ export default function CustomerReviews() {
       comment:
         "Good range of products, but shipping took longer than expected.",
       rating: 3,
+      details:
+        "Purchased a set of basketballs. The product quality was good, but shipping took an additional 5 days due to stock unavailability. Overall, satisfied with the purchase.",
     },
     {
       id: 5,
@@ -36,6 +48,8 @@ export default function CustomerReviews() {
       comment:
         "Amazing quality! The basketball I purchased feels professional-grade.",
       rating: 5,
+      details:
+        "Ordered a professional basketball with a leather finish. It feels premium and is perfect for tournaments. The bounce and grip are remarkable, making it an excellent choice.",
     },
     {
       id: 6,
@@ -43,27 +57,52 @@ export default function CustomerReviews() {
       comment:
         "I’m happy with my purchase. The cricket bat is fantastic and lightweight.",
       rating: 4,
+      details:
+        "Bought a lightweight cricket bat. The handle has a firm grip, and the bat delivers excellent strokes. Ideal for practice games and casual matches with friends.",
     },
   ];
 
   return (
-    <section className="py-12 bg-gray-100">
-      <div className="w-11/12 m-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          Customer Reviews
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review) => (
-            <div key={review.id} className="card shadow-lg p-6">
-              <p className="text-gray-700 italic mb-4">{review.comment}</p>
-              <div className="flex items-center mt-2">
-                <span className="font-bold text-primary">{review.user}</span>
-                <span className="ml-4">{"★".repeat(review.rating)}</span>
+    <Fade cascade>
+      <section className="py-12">
+        <div className="w-11/12 m-auto">
+          <h2 className="text-3xl font-bold text-center mb-8 text-primary">
+            <Fade cascade>Customer Reviews</Fade>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {reviews.map((review) => (
+              <div
+                key={review.id}
+                className="card shadow-lg p-6"
+                data-tooltip-id={`tooltip-${review.id}`}
+                data-tooltip-content={review.details}
+                data-tooltip-place="auto"
+              >
+                <p className="italic mb-4">{review.comment}</p>
+                <div className="flex items-center mt-2">
+                  <span className="font-bold text-primary">{review.user}</span>
+                  <span className="ml-4">
+                    <ReactStars
+                      count={5}
+                      size={24}
+                      isHalf={true}
+                      value={review.rating}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      activeColor="#ffd700"
+                    />
+                  </span>
+                </div>
+                <Tooltip
+                  id={`tooltip-${review.id}`}
+                  className="custom-tooltip"
+                />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Fade>
   );
 }

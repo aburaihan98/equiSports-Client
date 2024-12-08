@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Login() {
-  const { signInUser, loginWithGoogle } = useContext(AuthContext);
+  const { signInUser, loginWithGoogle, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -38,12 +39,14 @@ export default function Login() {
   };
 
   return (
-    <div className="bg-base-200 px-4 flex justify-center items-center min-h-screen">
+    <div className=" px-4 flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">Login now!</h1>
+          <h1 className="text-4xl font-bold text-primary mb-4">
+            <Fade cascade>Login now!</Fade>
+          </h1>
         </div>
-        <div className="card bg-base-100 shadow-xl rounded-lg p-8">
+        <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
           <form onSubmit={handleLoginSubmit} className="space-y-6">
             <div className="form-control">
               <label className="label mb-2 text-sm text-gray-700">Email</label>
@@ -52,7 +55,7 @@ export default function Login() {
                 placeholder="Email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -66,7 +69,7 @@ export default function Login() {
                 name="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3  text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -79,7 +82,7 @@ export default function Login() {
           </form>
           <button
             onClick={handleGoogleLogin}
-            className="w-full p-3 mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2"
+            className="btn btn-primary w-full  mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2"
           >
             <FaGoogle />
             Login with Google

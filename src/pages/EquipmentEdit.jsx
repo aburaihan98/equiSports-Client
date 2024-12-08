@@ -84,7 +84,7 @@ export default function EquipmentEdit() {
   };
 
   return (
-    <div className="bg-gray-100 flex justify-center items-center pt-8 pb-12 lg:pb-24">
+    <div className=" flex justify-center items-center pt-8 pb-12 lg:pb-24">
       <div className="w-11/12 m-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary mb-4">
@@ -105,7 +105,7 @@ export default function EquipmentEdit() {
                 placeholder="Your name"
                 name="name"
                 value={name}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -118,7 +118,7 @@ export default function EquipmentEdit() {
                 placeholder="Email"
                 name="email"
                 value={email}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -132,7 +132,7 @@ export default function EquipmentEdit() {
                 name="image"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -146,7 +146,7 @@ export default function EquipmentEdit() {
                 name="sports"
                 value={sports}
                 onChange={(e) => setSports(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -160,7 +160,7 @@ export default function EquipmentEdit() {
                 name="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -174,7 +174,7 @@ export default function EquipmentEdit() {
                 name="price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -188,7 +188,7 @@ export default function EquipmentEdit() {
                 name="customization"
                 value={customization}
                 onChange={(e) => setCustomization(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -202,7 +202,7 @@ export default function EquipmentEdit() {
                 name="processingTime"
                 value={processingTime}
                 onChange={(e) => setProcessingTime(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -214,7 +214,7 @@ export default function EquipmentEdit() {
                 name="stockStatus"
                 value={stockStatus}
                 onChange={(e) => setStockStatus(e.target.value)}
-                className="select select-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="select select-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               >
                 <option value="">Select Stock Status</option>
@@ -246,13 +246,13 @@ export default function EquipmentEdit() {
                 name="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
             <div></div>
             <div className="form-control mt-6 col-span-2">
-              <button className="btn btn-primary w-full py-3 rounded-lg text-white font-semibold">
+              <button className="btn btn-primary w-full py-3  rounded-lg text-white font-semibold">
                 Edit Equipment
               </button>
             </div>

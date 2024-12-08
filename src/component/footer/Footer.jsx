@@ -68,7 +68,7 @@ export default function Footer() {
       {/* Copyright Section */}
       <div className="text-center mt-8 border-t border-gray-700 pt-4">
         <p className="text-sm">
-          © {new Date().getFullYear()} Sports Gear Hub. All rights reserved.
+          © {new Date().getFullYear()} SportsNest. All rights reserved.
         </p>
       </div>
     </footer>

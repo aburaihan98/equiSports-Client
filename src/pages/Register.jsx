@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
+import { Fade } from "react-awesome-reveal";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Register() {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegisterSubmit = (e) => {
@@ -34,20 +35,24 @@ export default function Register() {
     createUser(email, password)
       .then(() => {
         toast.success("Your register successful");
+        updateUserProfile({
+          displayName: name,
+          photoURL: photo,
+        });
         navigate("/login");
       })
       .catch(() => toast.error("Enter your valid email!"));
   };
 
   return (
-    <div className="bg-base-200 px-4 flex justify-center items-center py-6 md-py-8 lg:py-12">
+    <div className=" px-4 flex justify-center items-center py-6 md-py-8 lg:py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary mb-4">
-            Register now!
+            <Fade cascade>Register now!</Fade>
           </h1>
         </div>
-        <div className="card bg-base-100 shadow-xl rounded-lg p-8">
+        <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
           <form onSubmit={handleRegisterSubmit} className="space-y-6">
             <div className="form-control">
               <label className="label mb-2 text-sm text-gray-700">Name</label>
@@ -55,7 +60,7 @@ export default function Register() {
                 type="text"
                 placeholder="Name"
                 name="name"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -65,7 +70,7 @@ export default function Register() {
                 type="text"
                 placeholder="Phot url"
                 name="photo"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -75,7 +80,7 @@ export default function Register() {
                 type="email"
                 placeholder="Email"
                 name="email"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -87,13 +92,13 @@ export default function Register() {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className="input input-bordered w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn btn-primary w-full py-3 rounded-lg text-white font-semibold">
+              <button className="btn btn-primary w-full py-3  rounded-lg text-white font-semibold">
                 Login
               </button>
             </div>

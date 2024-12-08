@@ -30,7 +30,7 @@ export default function EquipmentDetails() {
     stockStatus,
   } = equipment || {};
   return (
-    <div className="bg-gray-100 py-12 lg:py-24 ">
+    <div className=" py-12 lg:py-24 ">
       <div className="w-10/12 m-auto bg-white rounded-xl p-12">
         <h1 className="text-2xl lg:text-3xl font-bold text-center mb-8">
           {sports}

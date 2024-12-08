@@ -10,7 +10,9 @@ export default function MyEquipmentList() {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/sports/by-email/${user?.email}`)
+      fetch(
+        `https://equi-sports-server-ivory.vercel.app/sports/by-email/${user?.email}`
+      )
         .then((res) => res.json())
         .then((data) => setEquipments(data))
         .catch((error) => {
@@ -29,14 +31,19 @@ export default function MyEquipmentList() {
         <h1 className="text-3xl font-bold text-center mb-8 text-primary">
           <Fade cascade>My Equipment</Fade>
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6">
           {equipments.length === 0 ? (
             <div className="text-center py-12 lg:py-24 text-3xl font-bold text-primary">
               No equipment found
             </div>
           ) : (
             equipments.map((equipment) => (
-              <MyEquipmentListCard key={equipment?._id} equipment={equipment} />
+              <MyEquipmentListCard
+                key={equipment?._id}
+                equipment={equipment}
+                equipments={equipments}
+                setEquipments={setEquipments}
+              />
             ))
           )}
         </div>

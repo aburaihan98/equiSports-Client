@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import { useLoaderData, useParams } from "react-router";
 import Swal from "sweetalert2";
 import SimpleRating from "../component/simpleRating/SimpleRating";
@@ -37,7 +38,7 @@ export default function EquipmentEdit() {
       stockStatus,
     };
 
-    fetch(`http://localhost:3000/sports/${id}`, {
+    fetch(`https://equi-sports-server-ivory.vercel.app/sports/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +89,7 @@ export default function EquipmentEdit() {
       <div className="w-11/12 m-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-primary mb-4">
-            Edit Equipment
+            <Fade cascade>Edit Equipment</Fade>
           </h1>
         </div>
         <div className="bg-base-100 shadow-xl rounded-lg p-8">

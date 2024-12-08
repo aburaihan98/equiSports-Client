@@ -1,7 +1,7 @@
 export default function Slider() {
   return (
     <div className="carousel w-full">
-      <div id="slide1" className="carousel-item relative w-full ">
+      <div id="slide1" className="carousel-item relative w-full">
         <img
           src="https://cdn.pixabay.com/photo/2019/07/07/21/57/baseball-4323387_640.jpg"
           className="w-full h-[450px]"
@@ -14,7 +14,7 @@ export default function Slider() {
             ❯
           </a>
         </div>
-        <div className="absolute top-1/4 left-10 text-white">
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-white text-center">
           <h2 className="text-4xl font-bold">Baseball Gear</h2>
           <p className="text-lg mt-2">Get the best gear for your game.</p>
         </div>
@@ -32,7 +32,7 @@ export default function Slider() {
             ❯
           </a>
         </div>
-        <div className="absolute top-1/4 left-10 text-white">
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-white text-center">
           <h2 className="text-4xl font-bold">Tennis Equipment</h2>
           <p className="text-lg mt-2">
             Equip yourself with premium tennis gear.
@@ -52,7 +52,7 @@ export default function Slider() {
             ❯
           </a>
         </div>
-        <div className="absolute top-1/4 left-10 text-white">
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-white text-center">
           <h2 className="text-4xl font-bold">Football Accessories</h2>
           <p className="text-lg mt-2">All your football needs in one place.</p>
         </div>
@@ -70,7 +70,7 @@ export default function Slider() {
             ❯
           </a>
         </div>
-        <div className="absolute top-1/4 left-10 text-white">
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-white text-center">
           <h2 className="text-4xl font-bold">Sports Apparel</h2>
           <p className="text-lg mt-2">
             Find comfortable sports apparel for every season.

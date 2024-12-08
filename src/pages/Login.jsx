@@ -1,12 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Login() {
-  const { signInUser, loginWithGoogle, loading } = useContext(AuthContext);
+  const { signInUser, loginWithGoogle } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,9 +24,21 @@ export default function Login() {
     signInUser(email, password)
       .then(() => {
         navigate(location.state ? location.state : "/");
-        toast.success("Your login successful");
+        Swal.fire({
+          icon: "success",
+          title: "Your login successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
-      .catch(() => toast.error("Your email or password is incorrect!"));
+      .catch(() =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Your email or password is incorrect!",
+          footer: '<a href="#">Why do I have this issue?</a>',
+        })
+      );
   };
 
   // google login
@@ -37,6 +52,18 @@ export default function Login() {
         toast.error("Enter your valid email");
       });
   };
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className=" px-4 flex justify-center items-center min-h-screen">

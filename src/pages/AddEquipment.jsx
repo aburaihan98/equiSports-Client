@@ -8,14 +8,6 @@ export default function AddEquipment() {
   const { user } = useContext(AuthContext);
   const [rating, setRating] = useState(0);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
   const handleAddEquipment = (e) => {
     e.preventDefault();
 
@@ -46,7 +38,7 @@ export default function AddEquipment() {
       stockStatus,
     };
 
-    fetch("http://localhost:3000/sports", {
+    fetch("https://equi-sports-server-ivory.vercel.app/sports", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -161,10 +153,10 @@ export default function AddEquipment() {
                 Price
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Price"
                 name="price"
-                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full pr-10 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -217,11 +209,10 @@ export default function AddEquipment() {
               <label className="label text-lg font-semibold text-gray-700">
                 Description
               </label>
-              <input
-                type="text"
+              <textarea
                 placeholder="Description"
                 name="description"
-                className="input input-bordered w-full p-3 text-primary  rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="input input-bordered w-full h-24 p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
             </div>

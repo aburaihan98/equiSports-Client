@@ -4,7 +4,11 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-export default function MyEquipmentListCard({ equipment }) {
+export default function MyEquipmentListCard({
+  equipment,
+  equipments,
+  setEquipments,
+}) {
   const { _id, image, sports, category, price, rating } = equipment || {};
 
   const handleEquipmentDelete = (id) => {
@@ -19,11 +23,14 @@ export default function MyEquipmentListCard({ equipment }) {
     }).then((result) => {
       if (result.isConfirmed) {
         // delete fetch req
-        fetch(`http://localhost:3000/sports/${id}`, {
+        fetch(`https://equi-sports-server-ivory.vercel.app/sports/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json)
-          .then((data) => {})
+          .then(() => {
+            const remainingData = equipments.filter((item) => item?._id !== id);
+            setEquipments(remainingData);
+          })
           .catch(() => {});
         Swal.fire({
           title: "Deleted!",
@@ -35,7 +42,7 @@ export default function MyEquipmentListCard({ equipment }) {
   };
 
   return (
-    <Fade cascade>
+    <Fade direction="left">
       <div className="card shadow-2xl rounded-lg p-4 bg-white">
         <img
           src={image}

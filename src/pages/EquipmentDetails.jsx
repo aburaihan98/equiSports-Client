@@ -30,8 +30,8 @@ export default function EquipmentDetails() {
     stockStatus,
   } = equipment || {};
   return (
-    <div className=" py-12 lg:py-24 ">
-      <div className="w-10/12 m-auto bg-white rounded-xl p-12">
+    <div className="py-12 lg:py-24 ">
+      <div className="w-11/12 m-auto bg-white rounded-xl p-4 md:p-8 lg:p-12 shadow-2xl">
         <h1 className="text-2xl lg:text-3xl font-bold text-center mb-8">
           {sports}
         </h1>

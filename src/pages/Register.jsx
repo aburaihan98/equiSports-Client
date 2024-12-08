@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Link, useNavigate } from "react-router";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Register() {
   const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handleRegisterSubmit = (e) => {
@@ -20,29 +21,68 @@ export default function Register() {
     const password = formData.get("password");
 
     if (!/[A-Z]/.test(password)) {
-      toast.error("Password must contain at least one Uppercase letter");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must contain at least one Uppercase letter",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
       return;
     }
     if (!/[a-z]/.test(password)) {
-      toast.error("Password must contain at least one Lowercase letter");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must contain at least one Lowercase letter",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
       return;
     }
     if (password.length < 6) {
-      toast.error("Password must contain at least one six characters");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must contain at least one six characters",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
       return;
     }
 
     createUser(email, password)
       .then(() => {
-        toast.success("Your register successful");
+        Swal.fire({
+          icon: "success",
+          title: "Your register successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         updateUserProfile({
           displayName: name,
           photoURL: photo,
         });
         navigate("/login");
       })
-      .catch(() => toast.error("Enter your valid email!"));
+      .catch(() =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Enter your valid email!",
+          footer: '<a href="#">Why do I have this issue?</a>',
+        })
+      );
   };
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className=" px-4 flex justify-center items-center py-6 md-py-8 lg:py-12">

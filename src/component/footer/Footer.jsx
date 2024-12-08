@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="w-11/12 m-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Website Name and About */}
         <div className="text-center md:text-left">
-          <h1 className="text-2xl font-bold text-white">SportsNest</h1>
+          <h1 className="text-2xl font-bold text-white">EquiSports</h1>
           <p className="mt-4 text-sm">
             Your one-stop shop for all sports equipment and accessories.
             Discover quality gear for every sports enthusiast.
@@ -68,7 +68,7 @@ export default function Footer() {
       {/* Copyright Section */}
       <div className="text-center mt-8 border-t border-gray-700 pt-4">
         <p className="text-sm">
-          © {new Date().getFullYear()} SportsNest. All rights reserved.
+          © {new Date().getFullYear()} EquiSports. All rights reserved.
         </p>
       </div>
     </footer>

@@ -63,12 +63,16 @@ export default function CustomerReviews() {
   ];
 
   return (
-    <Fade cascade>
+    <Fade direction="left">
       <section className="py-12">
         <div className="w-11/12 m-auto">
           <h2 className="text-3xl font-bold text-center mb-8 text-primary">
             <Fade cascade>Customer Reviews</Fade>
           </h2>
+          <p className="text-center font-medium mb-8">
+            Hear from our valued customers about their experiences with our
+            products. Your feedback helps us improve and serve you better.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((review) => (
               <div

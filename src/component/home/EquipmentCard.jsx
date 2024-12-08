@@ -6,7 +6,7 @@ import { Link } from "react-router";
 export default function EquipmentCard({ equipment }) {
   const { _id, image, sports, category, price, rating } = equipment || {};
   return (
-    <Fade cascade>
+    <Fade direction="left">
       <div className="card shadow-lg rounded-lg p-4 bg-white">
         <img
           src={image}

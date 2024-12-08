@@ -21,14 +21,15 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomeLayout />,
-        loader: () => fetch("http://localhost:3000/sports"),
+        loader: () =>
+          fetch("https://equi-sports-server-ivory.vercel.app/sports"),
         children: [
           {
             path: "/",
             element: <Equipments />,
           },
           {
-            path: "/:id",
+            path: "/:category",
             element: <Equipments />,
           },
         ],
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
       {
         path: "/all-sports-equipment",
         element: <AllSportsEquipment />,
-        loader: () => fetch("http://localhost:3000/sports"),
+        loader: () =>
+          fetch("https://equi-sports-server-ivory.vercel.app/sports"),
       },
       {
         path: "/my-equipment-list",
@@ -61,7 +63,8 @@ const router = createBrowserRouter([
             <EquipmentDetails />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/sports"),
+        loader: () =>
+          fetch("https://equi-sports-server-ivory.vercel.app/sports"),
       },
       {
         path: "/equipment-edit/:id",
@@ -71,7 +74,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/sports/${params.id}`),
+          fetch(
+            `https://equi-sports-server-ivory.vercel.app/sports/${params.id}`
+          ),
       },
       {
         path: "/login",

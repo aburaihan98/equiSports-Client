@@ -76,3 +76,6 @@ npm install
 
 ### 4. Just run this command
 npm run dev
+
+live project links:
+equisports-4a0d5.web.app

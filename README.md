@@ -1,4 +1,5 @@
 # **EquiSports - Sports Equipment Online Store**
+## project overview:
 
 Welcome to **EquiSports**, your one-stop platform for purchasing a wide range of sports equipment, gear, and apparel. Whether you're a professional athlete or a sports enthusiast, EquiSports offers high-quality products across various sports disciplines.
 

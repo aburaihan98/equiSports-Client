@@ -79,4 +79,4 @@ npm install
 npm run dev
 
 ## live project links:
-[equisports-4a0d5.web.app]()https://equisports-8e6c5.web.app/
+https://equisports-8e6c5.web.app/

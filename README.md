@@ -1,4 +1,4 @@
-**EquiSports - A Sports Equipment Store** 🏆  
+# EquiSports - A Sports Equipment Store🏆  
 
 EquiSports is a **sports accessories e-commerce platform** where users can browse, purchase, and manage sports equipment. The website includes **user authentication, product management, sorting, filtering, and a dark/light theme toggle** for a seamless experience. Users can add, update, and delete their listed equipment while enjoying an intuitive UI with **Lottie animations and smooth transitions**. The site ensures **secure authentication with Firebase and protected routes with JWT**, providing a reliable shopping experience. 🚀
 

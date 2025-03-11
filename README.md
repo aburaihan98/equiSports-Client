@@ -4,6 +4,20 @@ Welcome to **EquiSports**, your one-stop platform for purchasing a wide range of
 
 ![EquiSports Screenshot](https://i.postimg.cc/PJ0VmCdt/Screenshot-54.png)
 
+## live project links:
+https://equisports-8e6c5.web.app/
+
+## **Core Features**
+- **User Authentication**: Users can log in and register using email/password or OAuth (Google/GitHub/Facebook/Twitter).
+- **Product Management**: Admin users can add, update, or delete sports equipment.
+- **Private Routes**: Certain pages, such as "Add Equipment" and "My Equipment List," are accessible only to authenticated users.
+- **Product Sorting**: Users can sort products by price (ascending/descending).
+- **Responsive Design**: The site is fully responsive, optimized for mobile, tablet, and desktop.
+- **Dark/Light Mode Toggle**: Users can switch between dark and light themes.
+- **Product Details**: Each product has its own details page with more information and a "View Details" button.
+- **404 Page**: A dedicated error page for non-existing routes.
+- **Loading Spinner**: A spinner is displayed while loading data.
+
 ## **Technologies Used**
 - **Frontend**:
   - `React.js`: JavaScript library for building user interfaces.
@@ -26,17 +40,6 @@ Welcome to **EquiSports**, your one-stop platform for purchasing a wide range of
 - **Hosting**:
   - **Frontend**: Firebase Hosting.
   - **Backend**: Vercel.
-
-## **Core Features**
-- **User Authentication**: Users can log in and register using email/password or OAuth (Google/GitHub/Facebook/Twitter).
-- **Product Management**: Admin users can add, update, or delete sports equipment.
-- **Private Routes**: Certain pages, such as "Add Equipment" and "My Equipment List," are accessible only to authenticated users.
-- **Product Sorting**: Users can sort products by price (ascending/descending).
-- **Responsive Design**: The site is fully responsive, optimized for mobile, tablet, and desktop.
-- **Dark/Light Mode Toggle**: Users can switch between dark and light themes.
-- **Product Details**: Each product has its own details page with more information and a "View Details" button.
-- **404 Page**: A dedicated error page for non-existing routes.
-- **Loading Spinner**: A spinner is displayed while loading data.
 
 ## **Dependencies Used**
 - **Frontend**:
@@ -76,6 +79,3 @@ npm install
 
 ### 4. Just run this command
 npm run dev
-
-## live project links:
-https://equisports-8e6c5.web.app/
